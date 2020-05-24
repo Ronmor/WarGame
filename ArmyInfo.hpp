@@ -15,7 +15,7 @@ a vector of soldiers and a sorting method by HealthPoints
 #include <cmath>
 
 #include "Soldier.hpp"
-#include "Comperator_HP.hpp"
+
 
 
 namespace WarGame{
