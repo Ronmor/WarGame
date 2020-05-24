@@ -20,7 +20,7 @@ namespace WarGame {
 		 * The constructor initilizes the board and places the soldiers.
 		 */
 		DemoGame();
-		
+		DemoGame(int,int);
 		/**
 		 * This function runs a sample play of the game and returns the winner (1 or 2, or 0 in case of tie).
 		 */
