@@ -137,6 +137,7 @@ void Board::move(uint player_number, pair<int, int> source, MoveDIR direction)
 // returns true iff the board contains one or more soldiers of the given player.
 bool Board::has_soldiers(uint player_number)
 {
+    updateBoard();
     for (map<Soldier*,pair<int,int>>::iterator it = getArmyInfo(player_number).getArmy().begin(); it != getArmyInfo(player_number).getArmy().end(); it++)
     {        
     if (it -> first ->getHealth() > 0)
