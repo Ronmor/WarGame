@@ -18,6 +18,8 @@ using std::endl;
 #include <cassert>
 
 namespace WarGame {
+	
+		DemoGame::DemoGame(int r,int c): board (r, c) {}
 
 		DemoGame::DemoGame(): board (8, 8) {
 			// Add soldiers for player 1:
