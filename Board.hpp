@@ -69,6 +69,7 @@ class Board {
     Board& updateBoard();
     std::pair<int, int> soldierTargetToActUpon(std::pair<int, int> actingSoldier);
 
+    ~Board();
   // my additions
 
 

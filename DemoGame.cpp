@@ -10,6 +10,10 @@
 #include "DemoGame.hpp"
 #include "FootSoldier.hpp"
 #include "FootCommander.hpp"
+#include "Sniper.hpp"
+#include "SniperCommander.hpp"
+#include "Paramedic.hpp"
+#include "ParamedicCommander.hpp"
 
 #include <iostream>
 using std::cout;
@@ -18,26 +22,30 @@ using std::endl;
 #include <cassert>
 
 namespace WarGame {
-	
-		DemoGame::DemoGame(int r,int c): board (r, c) {}
 
+		DemoGame::DemoGame(int rows,int cols) : board(rows,cols) {}
+		Board& DemoGame::getBoard() {return board;}
 		DemoGame::DemoGame(): board (8, 8) {
 			// Add soldiers for player 1:
-			assert(!board.has_soldiers(1));
+		//	assert(!board.has_soldiers(1));
 			board[{0,1}] = new FootSoldier(1);
 			//cout << board[{0,1}]->getHealth() << " , " << board[{0,1}]->getTeamNumber() << endl;
 			board[{0,3}] = new FootCommander(1);
 			board[{0,5}] = new FootSoldier(1);
-			assert(board.has_soldiers(1));
+		//	assert(board.has_soldiers(1));
 
 			// Add soldiers for player 2:
-			assert(!board.has_soldiers(2));
+		//	assert(!board.has_soldiers(2));
 			board[{7,1}] = new FootSoldier(2);
 			board[{7,3}] = new FootCommander(2);
 			board[{7,5}] = new FootSoldier(2);
-			assert(board.has_soldiers(2));
+		//	assert(board.has_soldiers(2));
 
 			// In your game, you can put more soldier types, such as the sniper and the paramedic types.
+		}
+
+		DemoGame::~DemoGame() {
+			//delete board;
 		}
 
 

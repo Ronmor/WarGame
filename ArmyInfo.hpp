@@ -17,7 +17,6 @@ a vector of soldiers and a sorting method by HealthPoints
 #include "Soldier.hpp"
 
 
-
 namespace WarGame{
 
 struct ArmyInfo
