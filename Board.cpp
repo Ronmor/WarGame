@@ -183,16 +183,5 @@ return *this;
 
 Board::~Board()
 {
-    for(int i=0; i < board.size() ; i++)
-    {
-        for (size_t j = 0; j < board.at(0).size() ; j++)
-        {
-            if (board[i][j])
-            {
-                delete board[i][j];
-            }   
-        }
-    }
-    board.clear();
-    
+    board.clear();   
 }
