@@ -1,11 +1,4 @@
 #pragma once
-/*
-a Map<Soldier*,pair<int,int>> sold_ptr,location
-
-a vector of soldiers and a sorting method by HealthPoints
-
-
-*/
 
 #include <vector>
 #include <map>
@@ -13,26 +6,24 @@ a vector of soldiers and a sorting method by HealthPoints
 #include <algorithm>
 #include <stdexcept>
 #include <cmath>
+#include <iostream> // maybe delete later
 
 #include "Soldier.hpp"
 
-
-namespace WarGame{
-
-struct ArmyInfo
+namespace WarGame
 {
-std::map<Soldier*,std::pair<int,int>> _army;
 
-ArmyInfo();
+    struct ArmyInfo
+    {
+        std::map<Soldier *, std::pair<int, int>> _army;
 
-    // methods
+        ArmyInfo();
 
-//void sortByHp();
+        // methods
+        void printArmyInfo();
+        ArmyInfo &changeSoldierLocation(std::pair<int, int> &source, std::pair<int, int> &dest);
 
-
-std::map<Soldier*,std::pair<int,int>>& getArmy();
-bool hasSoldiers(uint team);
-
-
-};
-}
+        std::map<Soldier *, std::pair<int, int>> &getArmy();
+        bool hasSoldiers(uint team);
+    };
+} // namespace WarGame

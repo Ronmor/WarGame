@@ -12,7 +12,7 @@ namespace WarGame
         ~ParamedicCommander();
         virtual void act(Soldier *target) override;
         virtual void heal() override;
-        virtual Soldier* calcTarget(std::pair<int, int>&,std::map<Soldier*,std::pair<int, int>>&) override;
+        virtual Soldier* calcTarget(std::pair<int, int>&,std::map<Soldier*,std::pair<int, int>>&,std::map<Soldier*,std::pair<int, int>>&) override;
     };
 
 } // namespace WarGame

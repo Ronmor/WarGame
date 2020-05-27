@@ -1,39 +1,58 @@
 #include "ArmyInfo.hpp"
 
-
-using std::sort;
 using std::copy;
 using std::map;
 using std::pair;
-
+using std::sort;
 
 using namespace WarGame;
-
-
 
 ArmyInfo::ArmyInfo() : _army() {}
 
 bool ArmyInfo::hasSoldiers(uint team)
 {
-    for(map<Soldier*,pair<int,int>>::iterator it = _army.begin(); it != _army.end(); it++)
+    for (map<Soldier *, pair<int, int>>::iterator it = _army.begin(); it != _army.end(); it++)
     {
-        if (it ->first ->getHealth() >  0) return true;
+        if (it->first->getHealth() > 0)
+            return true;
     }
     return false;
 }
-/*
-void ArmyInfo::sortByHp()
+
+void ArmyInfo::printArmyInfo()
 {
-    sort(_army.begin(),_army.end(),[](Soldier* sol1,Soldier* sol2)
+    if (!_army.empty())
     {
-        return sol1 ->getHealth() > sol2 ->getHealth() ;
-    });
+        for (map<Soldier *, pair<int, int>>::iterator it = _army.begin(); it != _army.end(); it++)
+        {
+            if (it->first->isAlive())
+            {
+                std::cout << "located at (" << it->second.first << "," << it->second.second << ")"
+                          << "     | Health Points  =  " << it->first->getHealth() << "|"
+                          << std::endl;
+            }
+        }
+    }
 }
-*/
+ArmyInfo &ArmyInfo::changeSoldierLocation(std::pair<int, int> &source, std::pair<int, int> &dest)
+{
+    for (map<Soldier *, pair<int, int>>::iterator it = _army.begin(); it != _army.end(); it++)
+    {
+        if (it->second.first == source.first && it->second.second == source.second)
+        {
+            //  std::cout << "located at (" << it->second.first << "," << it->second.second << ")"
+            //           << "     | Health Points  =  " << it->first->getHealth() << "|"
+            //           << std::endl;
+           // std::cout << "it->second = " << it->second.first << "," << it->second.second << std::endl;
+            it->second = dest;
+           // std::cout << "it->second = " << it->second.first << "," << it->second.second << std::endl;
+            return *this;
+        }
+    }
+    return *this;
+}
 
-
-map<Soldier*,std::pair<int,int>>& ArmyInfo::getArmy()
+map<Soldier *, std::pair<int, int>> &ArmyInfo::getArmy()
 {
     return _army;
 }
-

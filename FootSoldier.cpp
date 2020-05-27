@@ -11,34 +11,30 @@ using namespace WarGame;
 using std::abs;
 using std::pow;
 
-FootSoldier::FootSoldier(uint team_num) : Soldier(100, 10, true, team_num)
+FootSoldier::FootSoldier(uint team_num) : Soldier(100, 10, team_num)
 {
 }
 
-FootSoldier::FootSoldier(int life_points, int play_points, bool is_dist, uint player_number) : Soldier(life_points, play_points, true, player_number)
+FootSoldier::FootSoldier(int life_points, int play_points, uint player_number) : Soldier(life_points, play_points, player_number)
 {
-}
-
-void FootSoldier::makeMove2(std::pair<int, int> location)
-{
-    // TODO -> improve later.
-    // if is valid : move than attack target.
 }
 
 FootSoldier::~FootSoldier()
 {
-    //delete this;
+
 }
 
 void FootSoldier::act(Soldier *target)
 {
-    target->updateHealth(-10);
+    if(target) target->updateHealth(-10);
 }
 void FootSoldier::heal()
 {
     this->_health = 100;
 }
-Soldier* FootSoldier::calcTarget(std::pair<int, int>& myCoords,std::map<Soldier*,std::pair<int, int>>& enemies)
+Soldier* FootSoldier::calcTarget(std::pair<int, int>& myCoords,std::map<Soldier*,std::pair<int, int>>& enemies,std::map<Soldier*,std::pair<int, int>>& allies)
 {
-    return T.sortByDistance(myCoords,enemies);
+    Soldier* actUpon = T.sortByDistance(myCoords,enemies);
+    act(actUpon); 
+    return actUpon;
 }

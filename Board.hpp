@@ -66,8 +66,12 @@ class Board {
     bool isEmptySpace(std::pair<int,int> board_cell) const;
     ArmyInfo& getArmyInfo(uint team);
 
-    Board& updateBoard();
+    void printFullBoardState();
+    Board& updateBoard(); // endOfTurn
+    Board& readBoardState(); // at beginning of a turn;
+    Board& movePiece(uint team_number,std::pair<int,int> source,std::pair<int,int> dest);
     std::pair<int, int> soldierTargetToActUpon(std::pair<int, int> actingSoldier);
+    void printBoardVectors();
 
     ~Board();
   // my additions
