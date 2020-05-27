@@ -32,7 +32,7 @@ TEST_CASE("Foot soldiers and Foot Commanders Game")
     CHECK(board.has_soldiers(2));
     CHECK_NOTHROW(board.move(1, {0, 1}, Board::MoveDIR::Up)); // FootSoldier of player 1 moves forward and attacks.
     CHECK(board.has_soldiers(2));
-    CHECK_THROWS(board.move(1, {0, 1}, Board::MoveDIR::Up)); // no soldier in source
+    CHECK_THROWS(board.move(1, {0, 1}, Board::MoveDIR::Up));    // no soldier in source
     CHECK_THROWS(board.move(2, {1, 1}, Board::MoveDIR::Up));    // belong to other player
     CHECK_THROWS(board.move(1, {0, 3}, Board::MoveDIR::Right)); // there is someone else at dest
     CHECK_THROWS(board.move(1, {0, 0}, Board::MoveDIR::Down));
@@ -40,7 +40,7 @@ TEST_CASE("Foot soldiers and Foot Commanders Game")
     CHECK_NOTHROW(board.move(2, {7, 1}, Board::MoveDIR::Right));
     CHECK(board.has_soldiers(1));
     CHECK_THROWS(board.move(2, {7, 1}, Board::MoveDIR::Up)); // no soldier in source
-    CHECK_THROWS(board.move(1, {7, 2}, Board::MoveDIR::Up));    // belong to other player
+    CHECK_THROWS(board.move(1, {7, 2}, Board::MoveDIR::Up)); // belong to other player
     CHECK_NOTHROW(board.move(1, {0, 3}, Board::MoveDIR::Up));
     CHECK(board.has_soldiers(2));
     CHECK_THROWS(board.move(1, {0, 3}, Board::MoveDIR::Up));
@@ -49,19 +49,19 @@ TEST_CASE("Foot soldiers and Foot Commanders Game")
     CHECK(board.has_soldiers(1));
     CHECK_THROWS(board.move(2, {7, 3}, Board::MoveDIR::Up));
     CHECK_THROWS(board.move(1, {6, 3}, Board::MoveDIR::Up));
-    CHECK_NOTHROW(board.move(1, {0, 5}, Board::MoveDIR::Up)); 
+    CHECK_NOTHROW(board.move(1, {0, 5}, Board::MoveDIR::Up));
     CHECK_THROWS(board.move(1, {0, 5}, Board::MoveDIR::Up));
     CHECK_THROWS(board.move(2, {1, 5}, Board::MoveDIR::Up));
     CHECK(board.has_soldiers(2));
-    CHECK_NOTHROW(board.move(1, {1, 3}, Board::MoveDIR::Up)); 
+    CHECK_NOTHROW(board.move(1, {1, 3}, Board::MoveDIR::Up));
     CHECK(board.has_soldiers(2));
-    CHECK_NOTHROW(board.move(1, {2, 3}, Board::MoveDIR::Up)); 
+    CHECK_NOTHROW(board.move(1, {2, 3}, Board::MoveDIR::Up));
     CHECK(board.has_soldiers(2));
     CHECK_NOTHROW(board.move(1, {3, 3}, Board::MoveDIR::Up));
     CHECK(board.has_soldiers(2));
     CHECK_NOTHROW(board.move(2, {7, 2}, Board::MoveDIR::Left));
     CHECK(board.has_soldiers(1));
-    CHECK_NOTHROW(board.move(1, {4, 3}, Board::MoveDIR::Up)); 
+    CHECK_NOTHROW(board.move(1, {4, 3}, Board::MoveDIR::Up));
     CHECK(!board.has_soldiers(2));
     // illegal moves
     CHECK_THROWS(board.move(1, {0, 1}, Board::MoveDIR::Up));
@@ -80,7 +80,6 @@ TEST_CASE("Foot soldiers and Foot Commanders Game")
     CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
     CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
     CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
-
 }
 
 TEST_CASE("Foot soldiers and Snipers , SniperCommander and Paramedic")
@@ -102,16 +101,15 @@ TEST_CASE("Foot soldiers and Snipers , SniperCommander and Paramedic")
 
     CHECK_NOTHROW(board.move(2, {7, 2}, Board::MoveDIR::Right)); // FootSoldier of player 1 moves forward and attacks.
     CHECK(board.has_soldiers(1));
-    CHECK_THROWS(board.move(1, {7, 3}, Board::MoveDIR::Up)); // belong to other player
+    CHECK_THROWS(board.move(1, {7, 3}, Board::MoveDIR::Up));    // belong to other player
     CHECK_THROWS(board.move(2, {7, 2}, Board::MoveDIR::Up));    // no longer there
     CHECK_THROWS(board.move(1, {0, 2}, Board::MoveDIR::Right)); // there is someone else at dest
-    cout << "##$#$#$#$#$#$#$    "    << board.getBoard().at(0).at(4)->getHealth() <<  "            #$$#$#$#$#$#$#$#$#"  << endl;
-    CHECK_THROWS(board.move(1, {0, 4}, Board::MoveDIR::Up));        // died last round
+    CHECK_THROWS(board.move(1, {0, 4}, Board::MoveDIR::Up)); // died last round
     CHECK_THROWS(board.move(1, {0, 7}, Board::MoveDIR::Up)); // NULL
     CHECK_NOTHROW(board.move(2, {7, 1}, Board::MoveDIR::Right));
     CHECK(board.has_soldiers(1));
     CHECK_THROWS(board.move(2, {7, 1}, Board::MoveDIR::Up)); // no soldier in source
-    CHECK_THROWS(board.move(1, {7, 2}, Board::MoveDIR::Up));    // belong to other player
+    CHECK_THROWS(board.move(1, {7, 2}, Board::MoveDIR::Up)); // belong to other player
     CHECK_NOTHROW(board.move(1, {0, 1}, Board::MoveDIR::Up));
     CHECK(board.has_soldiers(2));
     CHECK_NOTHROW(board.move(1, {0, 3}, Board::MoveDIR::Up));
@@ -120,10 +118,7 @@ TEST_CASE("Foot soldiers and Snipers , SniperCommander and Paramedic")
     CHECK(board.has_soldiers(1));
     CHECK_THROWS(board.move(2, {7, 3}, Board::MoveDIR::Up));
     CHECK_THROWS(board.move(1, {3, 3}, Board::MoveDIR::Up));
-    //CHECK_THROWS(board.move(1, {0, 5}, Board::MoveDIR::Up)); 
-    cout << "init b" << endl;
-    //CHECK_THROWS(board.move(1, {0, 5}, Board::MoveDIR::Up));
-    // illegal moves
+
     CHECK_THROWS(board.move(1, {0, 1}, Board::MoveDIR::Up));
     CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
     CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
@@ -140,157 +135,69 @@ TEST_CASE("Foot soldiers and Snipers , SniperCommander and Paramedic")
     CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
     CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
     CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
-
+    CHECK_THROWS(board.move(1, {0, 1}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {0, 1}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {0, 1}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {0, 1}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
+    CHECK_THROWS(board.move(1, {4, 3}, Board::MoveDIR::Up));
     // If no player won, return "tie":
-
-}
-
-TEST_CASE("100"){
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
-    CHECK(1 == 1);
 }
