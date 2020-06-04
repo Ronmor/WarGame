@@ -77,7 +77,7 @@ pair<int, int> Board::permissionToChangeLocation(pair<int, int> &source, MoveDIR
 }
 bool Board::movementValidator(pair<int, int> &toValidate)
 {
-
+    cout << "##############                 " << toValidate.first << "," << toValidate.second << "      ########" << endl; 
     if (toValidate.first < 0 || toValidate.first >= _rows)
         throw invalid_argument("out of bounds in rows");
     if (toValidate.second < 0 || toValidate.second >= _cols)
@@ -110,7 +110,7 @@ void Board::move(uint player_number, pair<int, int> source, MoveDIR direction)
 {
     
     readBoardState();
-    //cout << source.first << "," << source.second << "###                          ######" << endl;
+    cout << source.first << "," << source.second << "###                          ######" << endl;
     if (isEmptySpace(source))
         throw invalid_argument("There is no soldier in the source location");
     if (board[source.first][source.second]->getTeamNumber() != player_number)
@@ -129,7 +129,7 @@ void Board::move(uint player_number, pair<int, int> source, MoveDIR direction)
         board[required_dest.first][required_dest.second];
         board[required_dest.first][required_dest.second] = p_soldi;
         movePiece(allies, source, required_dest);
-        Soldier *actUpon = board[source.first][source.second]->calcTarget(required_dest, getArmyInfo(enemies).getArmy(), getArmyInfo(allies).getArmy());
+        Soldier *actUpon = p_soldi->calcTarget(required_dest, getArmyInfo(enemies).getArmy(), getArmyInfo(allies).getArmy());
         if (board.at(source.first).at(source.second) != NULL)
         {
             board[source.first][source.second] = NULL;
