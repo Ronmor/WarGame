@@ -9,8 +9,8 @@
  */
 
 #include "Board.hpp"
-
-namespace WarGame {
+using namespace WarGame;
+	
 	class DemoGame {
 	 private:
 		Board board;
@@ -27,4 +27,4 @@ namespace WarGame {
 		 */
 		uint play(); 
 	};
-}
+
