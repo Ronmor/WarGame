@@ -78,9 +78,9 @@ pair<int, int> Board::permissionToChangeLocation(pair<int, int> &source, MoveDIR
 bool Board::movementValidator(pair<int, int> &toValidate)
 {
 
-    if (toValidate.first < 0 || toValidate.first > _rows)
+    if (toValidate.first < 0 || toValidate.first >= _rows)
         throw invalid_argument("out of bounds in rows");
-    if (toValidate.second < 0 || toValidate.second > _cols)
+    if (toValidate.second < 0 || toValidate.second >= _cols)
         throw invalid_argument("out of bounds in cols");
     try
     {
